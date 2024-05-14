@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.RegisterActivity">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Registro"
+           android:textSize="50dp"
+           android:layout_marginTop="60dp"
+           android:layout_marginLeft="25dp"
+           android:fontFamily="@font/indigo_daisy"
+           />
+       
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Completa estos datos"
+           android:layout_marginLeft="25dp"
+           android:layout_marginTop="5dp"
+           android:fontFamily="@font/roboto_regular"/>
+       <EditText
+           android:id="@+id/edittext_name"
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:hint="Nombre"
+           android:background="@drawable/edittext_custom"
+           android:layout_marginTop="50dp"
+           android:layout_marginLeft="20dp"
+           android:layout_marginRight="20dp"
+           android:padding="15dp"
+           android:inputType="text"/>
+
+       <EditText
+           android:id="@+id/edittext_lastname"
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:hint="Apellido"
+           android:background="@drawable/edittext_custom"
+           android:layout_marginTop="10dp"
+           android:layout_marginLeft="20dp"
+           android:layout_marginRight="20dp"
+           android:padding="15dp"
+           android:inputType="text"/>
+
+       <EditText
+           android:id="@+id/edittext_email"
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:hint="E-mail"
+           android:background="@drawable/edittext_custom"
+           android:layout_marginTop="50dp"
+           android:layout_marginLeft="20dp"
+           android:layout_marginRight="20dp"
+           android:padding="15dp"
+           android:inputType="textEmailAddress"/>
+
+       <EditText
+           android:id="@+id/edittext_password"
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:hint="Contrasena"
+           android:background="@drawable/edittext_custom"
+           android:layout_marginTop="50dp"
+           android:layout_marginLeft="20dp"
+           android:layout_marginRight="20dp"
+           android:padding="15dp"
+           android:inputType="textPassword"/>
+
+       <EditText
+           android:id="@+id/edittext_confirm_password"
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:hint="Confirmar Contrasena"
+           android:background="@drawable/edittext_custom"
+           android:layout_marginTop="50dp"
+           android:layout_marginLeft="20dp"
+           android:layout_marginRight="20dp"
+           android:padding="15dp"
+           android:inputType="textPassword"/>
+
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registrarse"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rounded_button"/>
+
+        <ImageView
+            android:id="@+id/image_go_login"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ico_arrowleft"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volver al Login"
+            android:layout_marginBottom="20dp"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

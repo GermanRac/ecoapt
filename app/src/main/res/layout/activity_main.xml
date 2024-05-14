@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activities.MainActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/mainbackground1024x1024"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="752dp"
+            android:alpha="0.4"
+            android:background="@color/black" />
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="100dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_layout"
+            android:alpha="0.3"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/ico_person"
+                android:layout_marginTop="10dp"
+                android:contentDescription="Icono" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LOGIN"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textAlignment="center"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_account"
+                    android:tint="@color/white" />
+
+                <EditText
+                    android:id="@+id/edittext_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Correo electrónico"
+                    android:inputType="textEmailAddress"
+                    android:textSize="13sp"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ico_password"
+                    android:tint="@color/white" />
+
+                <EditText
+                    android:id="@+id/edittext_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contrasena"
+                    android:inputType="textPassword"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:text="INICIAR SESION"
+                android:background="@drawable/rounded_button"
+                android:layout_marginTop="30dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="10dp">
+
+                <View
+                    android:layout_width="70dp"
+                    android:layout_height="1dp"
+                    android:background="@color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registrate"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <View
+                    android:layout_width="70dp"
+                    android:layout_height="1dp"
+                    android:background="@color/white"/>
+
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:text="Registrarse"
+                android:layout_marginTop="30dp"/>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
