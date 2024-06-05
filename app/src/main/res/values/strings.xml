@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DeliveryKotlinUdemy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="terms_conditions_text">Acepto los <a href="https://tu-dominio.com/terminos-y-condiciones">términos y condiciones</a></string>
+
+
 </resources>
