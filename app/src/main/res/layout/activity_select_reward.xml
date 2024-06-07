@@ -18,6 +18,13 @@
             android:layout_height="wrap_content"
             android:background="@color/gray"
             android:elevation="8dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Catalogo"
+                android:textSize="36sp"
+                android:textColor="@color/black"
+                android:gravity="center"/>
 
             <ImageView
                 android:id="@+id/im"
@@ -28,21 +35,15 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="52dp"
                 android:layout_marginLeft="52dp"
+                android:src="@drawable/img_logo_iguana"
                 android:layout_marginTop="-5dp"/>
 
             <ImageButton
                 android:id="@+id/btnIcoAtras"
                 android:layout_width="60dp"
-                android:layout_height="49dp"/>
+                android:layout_height="49dp"
+                android:src="@drawable/ico_arrowleft"/>
 
-            <ImageButton
-                android:id="@+id/btnAyuda"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="0dp" />
 
         </RelativeLayout>
 
@@ -126,7 +127,7 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvRewards"
+                android:id="@+id/recyclerview_rewards"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
