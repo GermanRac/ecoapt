@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import androidx.cardview.widget.CardView
 import com.google.gson.Gson
 import com.optic.ecoapt.R
 import com.optic.ecoapt.activities.MainActivity
-import com.optic.ecoapt.activities.SelectRewardActivity
 import com.optic.ecoapt.models.User
 import com.optic.ecoapt.utils.SharedPref
 
@@ -17,7 +17,6 @@ class ClientHomeActivity : AppCompatActivity() {
     private val TAG = "ClientHomeActivity"
     var buttonLogout: Button? = null
     var sharedPref: SharedPref? = null
-    var buttonRewards:Button? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,9 +26,18 @@ class ClientHomeActivity : AppCompatActivity() {
 
         buttonLogout = findViewById(R.id.btn_logoutClient)
         buttonLogout?.setOnClickListener{ logout() }
-        buttonRewards = findViewById(R.id.btn_rewards)
+        //buttonRewards = findViewById(R.id.btn_rewards)
+        //buttonRewards?.setOnClickListener{goToRewards()}
 
-        buttonRewards?.setOnClickListener{goToRewards()}
+        val cvEcocomparte = findViewById<CardView>(R.id.btn_ecocompartePrincipal)
+        cvEcocomparte.setOnClickListener {
+            goToEcocomparte()
+        }
+
+        val cvSchedule = findViewById<CardView>(R.id.btn_schedulePrincipal)
+        cvSchedule.setOnClickListener {
+            goToSchedule()
+        }
 
         getUserFromSession()
     }
@@ -55,10 +63,25 @@ class ClientHomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun goToRewards() {
-        val i = Intent(this, SelectRewardActivity::class.java)
+    private fun goToEcocomparte() {
+        val i = Intent(this, EcocomparteActivity::class.java)
         startActivity(i)
     }
+
+    private fun goToSchedule() {
+        val i = Intent(this, ScheduleActivity::class.java)
+        startActivity(i)
+    }
+
+//    private fun goToGame() {
+//        val i = Intent(this, GameActivity::class.java)
+//        startActivity(i)
+//    }
+
+//    private fun goToEcocomparte() {
+//        val i = Intent(this, EcocomparteActivity::class.java)
+//        startActivity(i)
+//    }
 
 
 }

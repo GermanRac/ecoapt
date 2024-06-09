@@ -9,14 +9,12 @@ import com.optic.ecoapt.R
 import com.optic.ecoapt.models.User
 import com.optic.ecoapt.utils.SharedPref
 
-class EcocomparteActivity : AppCompatActivity() {
+class ScheduleActivity : AppCompatActivity() {
 
-    private val TAG1 = "EcocomparteActivity"
-
-
+    private val TAG1 = "ScheduleActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ecocomparte)
+        setContentView(R.layout.activity_schedule)
 
 
         val btnIcoAtras = findViewById<ImageButton>(R.id.btnIcoAtras)
@@ -25,7 +23,15 @@ class EcocomparteActivity : AppCompatActivity() {
         }
 
         getUserFromSession()
+
+
     }
+
+
+
+
+
+
 
 
 
@@ -46,6 +52,10 @@ class EcocomparteActivity : AppCompatActivity() {
             Log.d(TAG1,"Usuario: $user")
         }
     }
+
+
+
+
 
 
 }
