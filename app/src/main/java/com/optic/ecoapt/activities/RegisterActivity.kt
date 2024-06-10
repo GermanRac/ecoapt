@@ -115,7 +115,8 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun goToClientHome() {
-        val i = Intent(this, ClientHomeActivity::class.java)
+        val i = Intent(this, SaveImageActivity::class.java)
+        i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // eliminar historial de pantallas
         startActivity(i)
     }
 

@@ -1,6 +1,8 @@
 package com.optic.ecoapt.activities
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -89,6 +91,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun goToClientHome() {
         val i = Intent(this, ClientHomeActivity::class.java)
+        i.flags = FLAG_ACTIVITY_NEW_TASK or FLAG_ACTIVITY_CLEAR_TASK // eliminar historial de pantallas
         startActivity(i)
     }
 
@@ -110,9 +113,28 @@ class MainActivity : AppCompatActivity() {
         val gson = Gson()
 
         if (!sharedPref.getData("user").isNullOrBlank()) {
+
             //si el usuario existe en sesion
             val user = gson.fromJson(sharedPref.getData("user"), User::class.java)
-            goToClientHome()
+
+
+            if (!sharedPref.getData("rol").isNullOrBlank()){
+
+                //si usuario selecciono el rol
+                val rol = sharedPref.getData("rol")?.replace("\"","")
+
+                Log.d("MainActivity","ROL $rol")
+
+                if (rol == "CLIENTE") {
+                    goToClientHome()
+                }
+
+            }
+            else{
+                goToClientHome()
+            }
+
+
         }
     }
 
