@@ -64,7 +64,7 @@ class SaveImageActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<ResponseHttp>, response: Response<ResponseHttp>) {
                     Log.d(TAG,"RESPONSE: $response")
                     Log.d(TAG,"BODY: ${response.body()}")// ver informacion que arroja el servidor
-
+//                    saveUserInSession(response.body()?.data.toString())
                 }
 
                 override fun onFailure(call: Call<ResponseHttp>, t: Throwable) {
@@ -80,11 +80,21 @@ class SaveImageActivity : AppCompatActivity() {
        }
 
     }
+
+
+    private fun saveUserInSession(data: String) {
+        val gson = Gson()
+        val user = gson.fromJson(data, User::class.java)
+        sharedPref?.save("user", user)
+        goToClientHome()
+    }
+
     private fun goToClientHome() {
         val i = Intent(this, ClientHomeActivity::class.java)
         i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // eliminar historial de pantallas
         startActivity(i)
     }
+
 
 
     private fun getUserFromSession(){

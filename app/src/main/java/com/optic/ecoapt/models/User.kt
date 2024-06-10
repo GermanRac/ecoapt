@@ -13,15 +13,22 @@ class User(
 //    @SerializedName("consent") val consent: CheckBox?,
     @SerializedName("password") val password:String,
     @SerializedName("session_token") val sessionToken:String? = null,
-    @SerializedName("image") val image:String? = null,
+    @SerializedName("image") val image: String? = null
 
 
-    ) {
+    )
+
+
+
+
+{
+
     override fun toString(): String {
-        return "User(id='$id', email='$email', name='$name', lastname='$lastname', points=$points, password='$password', session_token='$sessionToken',image='$image')"
+        return "User(id=$id, email='$email', name='$name', lastname='$lastname', points=$points, password='$password', sessionToken=$sessionToken, image=$image)"
     }
-
     fun toJson(): String {
         return Gson().toJson(this)
     }
+
+
 }
