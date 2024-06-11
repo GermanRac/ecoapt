@@ -2,10 +2,15 @@ package com.optic.ecoapt.adapters
 
 import android.app.Activity
 import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.optic.ecoapt.R
 import com.optic.ecoapt.models.Event
+import com.optic.ecoapt.utils.SharedPref
 
 class EventsAdapter (val context: Activity, val events: ArrayList<Event>): RecyclerView.Adapter<EventsAdapter.EventsViewHolder>() {
 
@@ -25,8 +30,10 @@ class EventsAdapter (val context: Activity, val events: ArrayList<Event>): Recyc
 
         val event = events[position] // CADA UNO DE LOS EVENTOS
 
-        holder.textViewCategory.text = category.name
-        Glide.with(context).load(category.image).into(holder.imageViewCategory)
+        holder.textViewEventName.text = event.name
+        holder.textViewEventDescription.text = event.description
+        holder.textViewEventDate.text = event.date
+        Glide.with(context).load(event.image).into(holder.imageViewEvent)
 
 
 //        holder.itemView.setOnClickListener { goToRol(rol) }

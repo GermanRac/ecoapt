@@ -20,7 +20,7 @@ interface EventsRoutes {
 
 
 
-    @GET("categories/getAll")
+    @GET("events/getAll")
     fun getAll():Call<ArrayList<Event>>
 
 
