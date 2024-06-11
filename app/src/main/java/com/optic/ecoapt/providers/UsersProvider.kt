@@ -12,10 +12,16 @@ import java.io.File
 
 class UsersProvider {
     private var usersRoutes: UsersRoutes? = null
+//    private var usersRoutesToken: UsersRoutes? = null
 
     init {
         val api = ApiRoutes()
         usersRoutes = api.getUsersRoutes()
+
+//        if (token !=null){
+//            usersRoutesToken = api.getUsersRoutesWithToken(token!!)
+//        }
+
 
     }
 

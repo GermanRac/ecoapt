@@ -26,6 +26,7 @@ class User(
     override fun toString(): String {
         return "User(id=$id, email='$email', name='$name', lastname='$lastname', points=$points, password='$password', sessionToken=$sessionToken, image=$image)"
     }
+
     fun toJson(): String {
         return Gson().toJson(this)
     }

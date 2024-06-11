@@ -1,5 +1,6 @@
 package com.optic.ecoapt.routes
 
+import com.optic.ecoapt.models.Event
 import com.optic.ecoapt.models.ResponseHttp
 import com.optic.ecoapt.models.User
 import okhttp3.MultipartBody
@@ -14,29 +15,16 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Part
 
-interface UsersRoutes {
-
-    @POST("users/create")
-    fun register (@Body user:User): Call <ResponseHttp>
-
-    @FormUrlEncoded
-    @POST("users/login")
-    fun login (@Field("email") email:String, @Field("password") password:String ): Call<ResponseHttp>
-
+interface EventsRoutes {
 
     @Multipart
-    @PUT("users/update")
-    fun update(
+    @POST("categories/create")
+    fun create(
         @Part image: MultipartBody.Part,
-        @Part("user") user:RequestBody
+        @Part("event") event: RequestBody
 //        @Header("Authorization") token:String
     ): Call<ResponseHttp>
 
-    @PUT("users/updateWithoutImage")
-    fun updateWithoutImage(
-        @Body user: User
-//        @Header("Authorization") token:String
-    ): Call<ResponseHttp>
 
 
 }

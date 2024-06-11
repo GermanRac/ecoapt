@@ -35,7 +35,8 @@ class ClientUpdateActivity : AppCompatActivity() {
     var user: User? = null
 
     private  var imageFile: File?= null
-    var usersProvider = UsersProvider()
+//    var usersProvider: UsersProvider? = null
+    var usersProvider =  UsersProvider()
 
 
 
@@ -50,6 +51,8 @@ class ClientUpdateActivity : AppCompatActivity() {
         buttonUpdate = findViewById(R.id.btn_update)
 
         getUserFromSession()
+
+//        usersProvider = UsersProvider(user?.sessionToken)
 
         editTextName?.setText(user?.name)
         editTextLastname?.setText(user?.lastname)
@@ -78,7 +81,11 @@ class ClientUpdateActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<ResponseHttp>, response: Response<ResponseHttp>) {
                     Log.d(TAG, "RESPONSE: $response")
                     Log.d(TAG, "BODY: ${response.body()}")// ver informacion que arroja el servidor
+
+                    Toast.makeText(this@ClientUpdateActivity, response.body()?.message,Toast.LENGTH_LONG).show()
+
                     saveUserInSession(response.body()?.data.toString())
+
                 }
 
                 override fun onFailure(call: Call<ResponseHttp>, t: Throwable) {
@@ -96,7 +103,10 @@ class ClientUpdateActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<ResponseHttp>, response: Response<ResponseHttp>) {
                     Log.d(TAG, "RESPONSE: $response")
                     Log.d(TAG, "BODY: ${response.body()}")// ver informacion que arroja el servidor
+                    Toast.makeText(this@ClientUpdateActivity, response.body()?.message,Toast.LENGTH_LONG).show()
+
                     saveUserInSession(response.body()?.data.toString())
+
                 }
 
                 override fun onFailure(call: Call<ResponseHttp>, t: Throwable) {
