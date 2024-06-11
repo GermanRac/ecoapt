@@ -21,6 +21,10 @@ class EventsProvider {
 
     }
 
+    fun getAll():Call<ArrayList<Event>>? {
+        return eventsRoutes?.getAll()
+    }
+
 
     fun  create(file: File, event: Event): Call<ResponseHttp>? {
         val reqFile = RequestBody.create(MediaType.parse("image/*"),file)
