@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.cardview.widget.CardView
 import com.google.gson.Gson
 import com.optic.ecoapt.R
@@ -39,6 +40,11 @@ class ClientHomeActivity : AppCompatActivity() {
             goToSchedule()
         }
 
+        val btnProfile = findViewById<ImageButton>(R.id.btn_profile)
+        btnProfile.setOnClickListener {
+            goToProfile()
+        }
+
         getUserFromSession()
     }
 
@@ -61,6 +67,11 @@ class ClientHomeActivity : AppCompatActivity() {
             val user = gson.fromJson(sharedPref?.getData("user"), User::class.java )
             Log.d(TAG,"Usuario: $user")
         }
+    }
+
+    private fun goToProfile() {
+        val i = Intent(this, UserProfileActivity::class.java)
+        startActivity(i)
     }
 
     private fun goToEcocomparte() {

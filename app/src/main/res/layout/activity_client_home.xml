@@ -8,6 +8,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activities.client.home.ClientHomeActivity">
 
+
+    <RelativeLayout
+        android:id="@+id/bar_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray"
+        android:elevation="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Menu Principal"
+            android:textColor="@color/black"
+            android:textSize="36sp" />
+
+        <ImageView
+            android:id="@+id/im"
+            android:layout_width="60dp"
+            android:layout_height="49dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="315dp"
+            android:layout_marginLeft="315dp"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/img_logo_iguana" />
+
+        <ImageButton
+            android:id="@+id/btn_profile"
+            android:layout_width="60dp"
+            android:layout_height="49dp"
+            android:src="@drawable/ico_profile"
+            android:visibility="visible"
+            tools:visibility="visible" />
+    </RelativeLayout>
+
     <TextView
         android:id="@+id/mainTitle"
         android:layout_width="wrap_content"

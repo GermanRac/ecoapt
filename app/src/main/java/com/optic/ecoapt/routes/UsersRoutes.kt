@@ -30,6 +30,11 @@ interface UsersRoutes {
         @Part("user") user:RequestBody
     ): Call<ResponseHttp>
 
+    @PUT("users/updateWithoutImage")
+    fun updateWithoutImage(
+        @Body user: User
+    ): Call<ResponseHttp>
+
 
 }
 
