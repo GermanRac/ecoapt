@@ -56,13 +56,13 @@
            android:id="@+id/edittext_email"
            android:layout_width="match_parent"
            android:layout_height="50dp"
-           android:hint="E-mail"
-           android:background="@drawable/edittext_custom"
-           android:layout_marginTop="50dp"
            android:layout_marginLeft="20dp"
+           android:layout_marginTop="20dp"
            android:layout_marginRight="20dp"
-           android:padding="15dp"
-           android:inputType="textEmailAddress"/>
+           android:background="@drawable/edittext_custom"
+           android:hint="E-mail"
+           android:inputType="textEmailAddress"
+           android:padding="15dp" />
 
        <EditText
            android:id="@+id/edittext_password"
@@ -70,7 +70,7 @@
            android:layout_height="50dp"
            android:hint="Contrasena"
            android:background="@drawable/edittext_custom"
-           android:layout_marginTop="50dp"
+           android:layout_marginTop="20dp"
            android:layout_marginLeft="20dp"
            android:layout_marginRight="20dp"
            android:padding="15dp"
@@ -82,21 +82,45 @@
            android:layout_height="50dp"
            android:hint="Confirmar Contrasena"
            android:background="@drawable/edittext_custom"
-           android:layout_marginTop="50dp"
+           android:layout_marginTop="20dp"
            android:layout_marginLeft="20dp"
            android:layout_marginRight="20dp"
            android:padding="15dp"
            android:inputType="textPassword"/>
 
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:layout_marginTop="30dp"
+           android:layout_marginLeft="20dp"
+           android:layout_marginRight="20dp"
+           android:padding="15dp"
+           android:orientation="horizontal">
+
+           <CheckBox
+               android:id="@+id/cb_terms_conditions"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/terms_conditions_text"
+               style="@style/ClickableTextViewStyle" />
+
+       </LinearLayout>
+
 
     </LinearLayout>
-    
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="bottom"
         android:gravity="center">
+
 
         <Button
             android:id="@+id/btn_register"
@@ -120,6 +144,8 @@
 
 
     </LinearLayout>
+
+
 
 
 
