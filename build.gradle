@@ -11,6 +11,19 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+
+    
+plugins {
+    id "jacoco"
+    id "org.sonarqube" version "3.5.0.2730”
+}
+ 
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
+    
 }
 
 task clean(type: Delete) {
