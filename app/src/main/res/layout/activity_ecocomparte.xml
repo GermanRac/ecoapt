@@ -64,21 +64,15 @@
 
         <Button
             android:id="@+id/btn_UploadImage"
-            android:layout_width="0dp"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Subir imagen" />
 
-        <Button
-            android:id="@+id/btn_DownloadImage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Descargar imagen" />
 
         <Button
             android:id="@+id/btn_DeleteImage"
-            android:layout_width="0dp"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Borrar imagen" />
@@ -86,7 +80,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_Images"
+        android:id="@+id/recyclerview_photos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
