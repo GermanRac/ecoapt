@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_schedule"
+        android:icon="@drawable/ico_calendar"
+        android:title="Calendario"/>
+
+    <item
+        android:id="@+id/item_ecocomparte"
+        android:icon="@drawable/ico_ecocomparte"
+        android:title="EcoComparte"/>
+
+    <item
+        android:id="@+id/item_rewards"
+        android:icon="@drawable/ic_email_gray"
+        android:title="Recompensas"/>
+
+</menu>
