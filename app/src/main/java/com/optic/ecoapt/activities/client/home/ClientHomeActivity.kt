@@ -7,17 +7,23 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.cardview.widget.CardView
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import com.optic.ecoapt.R
 import com.optic.ecoapt.activities.MainActivity
+import com.optic.ecoapt.fragments.client.ClientEcocomparteFragment
+import com.optic.ecoapt.fragments.client.ClientRewardFragment
+import com.optic.ecoapt.fragments.client.ClientScheduleFragment
 import com.optic.ecoapt.models.User
 import com.optic.ecoapt.utils.SharedPref
 
 class ClientHomeActivity : AppCompatActivity() {
 
     private val TAG = "ClientHomeActivity"
-    var buttonLogout: Button? = null
+
     var sharedPref: SharedPref? = null
+    var bottomNavigation:BottomNavigationView? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,8 +31,31 @@ class ClientHomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_client_home)
         sharedPref = SharedPref(this)
 
-        buttonLogout = findViewById(R.id.btn_logoutClient)
-        buttonLogout?.setOnClickListener{ logout() }
+        bottomNavigation = findViewById(R.id.bottom_navigation)
+        bottomNavigation?.setOnItemSelectedListener {
+
+            when (it.itemId) {
+
+                R.id.item_schedule ->{
+                    openFragment(ClientScheduleFragment())
+                    true
+                }
+
+                R.id.item_ecocomparte ->{
+                    openFragment(ClientEcocomparteFragment())
+                    true
+                }
+
+                R.id.item_rewards ->{
+                    openFragment(ClientRewardFragment())
+                    true
+                }
+
+                else -> false
+
+            }
+        }
+
         //buttonRewards = findViewById(R.id.btn_rewards)
         //buttonRewards?.setOnClickListener{goToRewards()}
 
@@ -48,14 +77,15 @@ class ClientHomeActivity : AppCompatActivity() {
         getUserFromSession()
     }
 
-
-
-    private fun  logout() {
-
-        sharedPref?.remove("user")
-        val i = Intent(this,MainActivity::class.java)
-        startActivity(i)
+    private fun openFragment (fragment: Fragment){
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.container, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
+
+
+
 
     private fun getUserFromSession(){
 
