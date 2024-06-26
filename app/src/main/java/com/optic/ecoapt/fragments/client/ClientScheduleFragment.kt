@@ -1,60 +1,89 @@
 package com.optic.ecoapt.fragments.client
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.optic.ecoapt.R
+import com.optic.ecoapt.activities.client.home.ScheduleActivity
+import com.optic.ecoapt.adapters.EventsAdapter
+import com.optic.ecoapt.models.Event
+import com.optic.ecoapt.models.User
+import com.optic.ecoapt.providers.EventsProvider
+import com.optic.ecoapt.utils.SharedPref
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ClientScheduleFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ClientScheduleFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val TAG = "ScheduleActivity"
+    var myView: View? = null
+    var recyclerViewEvents: RecyclerView? = null
+    var eventsProvider: EventsProvider? = null
+    var adapter: EventsAdapter? = null
+    var user: User? = null
+    var sharedPref: SharedPref? = null
+    var events = ArrayList<Event>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_client_schedule, container, false)
+        myView = inflater.inflate(R.layout.fragment_client_schedule, container, false)
+
+        recyclerViewEvents = myView?.findViewById(R.id.recyclerview_events)
+        recyclerViewEvents?.layoutManager = LinearLayoutManager(requireContext()) // ELEMENTOS SE MOSTRARAN DE MANERA VERTICAL
+
+        sharedPref = SharedPref(requireActivity())
+        getUserFromSession()
+        eventsProvider = EventsProvider()
+        getEvents()
+
+
+        return  myView
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ClientScheduleFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ClientScheduleFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
+    private fun getEvents() {
+        eventsProvider?.getAll()?.enqueue(object : Callback<ArrayList<Event>> {
+            override fun onResponse(call: Call<ArrayList<Event>>, response: Response<ArrayList<Event>>) {
+                if (response.body() != null) {
+                    events.addAll(response.body()!!)
+                    adapter = EventsAdapter(requireActivity(), events)
+                    recyclerViewEvents?.adapter = adapter
                 }
             }
+
+            override fun onFailure(call: Call<ArrayList<Event>>, t: Throwable) {
+                Log.d(TAG, "Error: ${t.message}")
+                Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+        })
     }
+
+
+
+
+    private fun getUserFromSession(){
+
+        val gson = Gson()
+
+        if (!sharedPref?.getData("user").isNullOrBlank()) {
+            //si el usuario existe en sesion
+            val user = gson.fromJson(sharedPref?.getData("user"), User::class.java )
+            Log.d(TAG,"Usuario: $user")
+        }
+    }
+
+
+
 }

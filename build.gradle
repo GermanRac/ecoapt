@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath 'com.android.tools.build:gradle:8.2.2'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -13,17 +13,17 @@ buildscript {
     }
 }
 
-plugins {
-    id("org.sonarqube") version "4.4.1.3373"
-}
-
-sonar {
-    properties {
-        property("sonar.projectKey", "GermanRac_ecoapt")
-        property("sonar.organization", "germanrac")
-        property("sonar.host.url", "https://sonarcloud.io")
-    }
-}
+//plugins {
+//    id("org.sonarqube") version "4.4.1.3373"
+//}
+//
+//sonar {
+//    properties {
+//        property("sonar.projectKey", "GermanRac_ecoapt")
+//        property("sonar.organization", "germanrac")
+//        property("sonar.host.url", "https://sonarcloud.io")
+//    }
+//}
 
 task clean(type: Delete) {
     delete rootProject.buildDir

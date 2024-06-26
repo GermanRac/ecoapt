@@ -3,7 +3,6 @@ package com.optic.ecoapt.activities.client.home
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +21,7 @@ import retrofit2.Response
 class ScheduleActivity : AppCompatActivity() {
 
     private val TAG = "ScheduleActivity"
+
     var recyclerViewEvents: RecyclerView? = null
     var eventsProvider: EventsProvider? = null
     var adapter: EventsAdapter? = null

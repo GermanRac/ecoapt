@@ -13,7 +13,13 @@
 
     <item
         android:id="@+id/item_rewards"
-        android:icon="@drawable/ic_email_gray"
+        android:icon="@drawable/ico_rewards"
         android:title="Recompensas"/>
+
+    <item
+        android:id="@+id/item_profile"
+        android:icon="@drawable/ico_profile"
+        android:title="Perfil"/>
+
 
 </menu>

@@ -10,12 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.optic.ecoapt.R
-import com.optic.ecoapt.adapters.EventsAdapter
 import com.optic.ecoapt.adapters.PhotosAdapter
-import com.optic.ecoapt.models.Event
 import com.optic.ecoapt.models.Photo
 import com.optic.ecoapt.models.User
-import com.optic.ecoapt.providers.EventsProvider
 import com.optic.ecoapt.providers.PhotosProvider
 import com.optic.ecoapt.utils.SharedPref
 import retrofit2.Call

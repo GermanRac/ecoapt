@@ -13,7 +13,6 @@ import android.widget.Toast
 import com.google.gson.Gson
 
 import com.optic.ecoapt.R
-import com.optic.ecoapt.activities.client.home.ClientHomeActivity
 import com.optic.ecoapt.models.ResponseHttp
 import com.optic.ecoapt.models.User
 import com.optic.ecoapt.providers.UsersProvider
