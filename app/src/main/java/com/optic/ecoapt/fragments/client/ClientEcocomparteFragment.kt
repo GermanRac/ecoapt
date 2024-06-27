@@ -49,14 +49,19 @@ class ClientEcocomparteFragment : Fragment() {
         photosProvider = PhotosProvider()
         getPhotos()
 
-        val btnUpload= view?.findViewById<Button>(R.id.btn_UploadImage)
-        btnUpload?.setOnClickListener{
-
-        }
+        val btnUpload= myView?.findViewById<Button>(R.id.btn_UploadImage)
+        btnUpload?.setOnClickListener{ goToUpdatePhoto() }
 
         return myView
     }
 
+    private fun goToUpdatePhoto() {
+        val fragment = ClientEcocomparteUpdateFragment()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
 
     private fun getPhotos() {
         photosProvider?.getAll()?.enqueue(object : Callback<ArrayList<Photo>> {

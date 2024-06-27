@@ -41,7 +41,7 @@ class UserProfileActivity : AppCompatActivity() {
         textViewLastname = findViewById(R.id.textview_lastname)
         textViewEmail = findViewById(R.id.textview_email)
         circleImageUser = findViewById(R.id.circleimage_user)
-        imageviewBackmenu = findViewById(R.id.imageview_backmenu)
+
         buttonLogout = findViewById(R.id.btn_logoutClient)
 
         sharedPref = SharedPref(this)

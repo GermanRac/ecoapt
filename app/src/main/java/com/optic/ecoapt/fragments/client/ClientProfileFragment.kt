@@ -50,7 +50,7 @@ class ClientProfileFragment : Fragment() {
         textViewLastname = myView?.findViewById(R.id.textview_lastname)
         textViewEmail = myView?.findViewById(R.id.textview_email)
         circleImageUser = myView?.findViewById(R.id.circleimage_user)
-        imageviewBackmenu = myView?.findViewById(R.id.imageview_backmenu)
+
         buttonLogout = myView?.findViewById(R.id.btn_logoutClient)
 
         buttonUpdateProfile?.setOnClickListener{goToUpdate()}
