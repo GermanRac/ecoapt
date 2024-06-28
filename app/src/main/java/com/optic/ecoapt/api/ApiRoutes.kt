@@ -21,7 +21,7 @@ class ApiRoutes {
         return retrofit.getClient(API_URL).create(EventsRoutes::class.java)
     }
 
-    fun getPhotosRoutes():PhotosRoutes {
-        return retrofit.getClient(API_URL).create(PhotosRoutes::class.java)
+    fun getPhotosRoutes(token:String):PhotosRoutes {
+        return retrofit.getClientWithToken(API_URL,token).create(PhotosRoutes::class.java)
     }
 }

@@ -28,8 +28,8 @@ interface PhotosRoutes {
     @POST("photos/create")
     fun create(
         @Part image: MultipartBody.Part,
-        @Part("photo") event: RequestBody
-//        @Header("Authorization") token:String
+        @Part("photo") photo: RequestBody,
+        @Header("Authorization") token:String
     ): Call<ResponseHttp>
 
 

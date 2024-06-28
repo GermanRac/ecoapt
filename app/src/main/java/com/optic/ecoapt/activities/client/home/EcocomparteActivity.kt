@@ -39,7 +39,7 @@ class EcocomparteActivity : AppCompatActivity() {
 
         sharedPref = SharedPref(this)
         getUserFromSession()
-        photosProvider = PhotosProvider()
+        photosProvider = PhotosProvider(user?.sessionToken!!)
         getPhotos()
 
 

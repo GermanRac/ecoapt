@@ -46,7 +46,11 @@ class ClientEcocomparteFragment : Fragment() {
 
         sharedPref = SharedPref(requireActivity())
         getUserFromSession()
-        photosProvider = PhotosProvider()
+//        photosProvider = PhotosProvider(user?.sessionToken!!)
+        user?.sessionToken?.let { token ->
+            photosProvider = PhotosProvider(token)
+        }
+
         getPhotos()
 
         val btnUpload= myView?.findViewById<Button>(R.id.btn_UploadImage)
@@ -54,6 +58,10 @@ class ClientEcocomparteFragment : Fragment() {
 
         return myView
     }
+
+
+
+
 
     private fun goToUpdatePhoto() {
         val fragment = ClientEcocomparteUpdateFragment()
@@ -82,15 +90,24 @@ class ClientEcocomparteFragment : Fragment() {
 
 
 
-    private fun getUserFromSession(){
+//    private fun getUserFromSession(){
+//
+//        val sharedPref = SharedPref(requireActivity())
+//        val gson = Gson()
+//
+//        if (!sharedPref.getData("user").isNullOrBlank()) {
+//            //si el usuario existe en sesion
+//            val user = gson.fromJson(sharedPref.getData("user"), User::class.java )
+//            Log.d(TAG,"Usuario: $user")
+//        }
+//    }
 
-        val sharedPref = SharedPref(requireActivity())
+    private fun getUserFromSession() {
         val gson = Gson()
-
-        if (!sharedPref.getData("user").isNullOrBlank()) {
-            //si el usuario existe en sesion
-            val user = gson.fromJson(sharedPref.getData("user"), User::class.java )
-            Log.d(TAG,"Usuario: $user")
+        val userData = sharedPref?.getData("user")
+        if (!userData.isNullOrBlank()) {
+            user = gson.fromJson(userData, User::class.java)
+            Log.d(TAG, "Usuario: $user")
         }
     }
 
