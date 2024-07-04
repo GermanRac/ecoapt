@@ -35,7 +35,7 @@ class RewardsAdapter (val context: Activity, val rewards: ArrayList<Reward>): Re
         holder.textViewRewardName.text = reward.name
         holder.textViewRewardDescription.text = reward.description
 //        holder.textViewRewardPoints.text = "${reward.points}$"
-        holder.textViewRewardPoints.text = reward.points
+        holder.textViewRewardPoints.text = reward.rewardpoints
         Glide.with(context).load(reward.image).into(holder.imageViewReward)
 
 

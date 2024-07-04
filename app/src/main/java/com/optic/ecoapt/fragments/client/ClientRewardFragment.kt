@@ -83,12 +83,18 @@ class ClientRewardFragment : Fragment() {
     private fun getUserFromSession(){
 
         val gson = Gson()
+        val userData = sharedPref?.getData("user")
 
-        if (!sharedPref?.getData("user").isNullOrBlank()) {
-            //si el usuario existe en sesion
-            val user = gson.fromJson(sharedPref?.getData("user"), User::class.java )
-            Log.d(TAG,"Usuario: $user")
+        if (!userData.isNullOrBlank()) {
+            user = gson.fromJson(userData, User::class.java)
+            Log.d(TAG, "Usuario: $user")
         }
+
+//        if (!sharedPref?.getData("user").isNullOrBlank()) {
+//            //si el usuario existe en sesion
+//            val user = gson.fromJson(sharedPref?.getData("user"), User::class.java )
+//            Log.d(TAG,"Usuario: $user")
+//        }
     }
 
 

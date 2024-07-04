@@ -2,11 +2,11 @@ package com.optic.ecoapt.models
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 class Reward (
-    @SerializedName("id") val id: String,
-    @SerializedName("name") val name: String,
-    @SerializedName("description") val description:String,
-    @SerializedName("reward_points") val points: String,
-    @SerializedName("image") val image: String,
+     val id: String,
+     val name: String,
+     val description:String,
+     val rewardpoints: String,
+     val image: String,
 
     ){
 
@@ -15,7 +15,7 @@ class Reward (
     }
 
     override fun toString(): String {
-        return "Reward(id='$id', name='$name', description='$description', points='$points', image='$image')"
+        return "Reward(id='$id', name='$name', description='$description', rewardpoints='$rewardpoints', image='$image')"
     }
 
 
