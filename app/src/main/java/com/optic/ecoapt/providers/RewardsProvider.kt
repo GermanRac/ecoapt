@@ -1,10 +1,8 @@
 package com.optic.ecoapt.providers
 
 import com.optic.ecoapt.api.ApiRoutes
-import com.optic.ecoapt.models.Photo
 import com.optic.ecoapt.models.ResponseHttp
 import com.optic.ecoapt.models.Reward
-import com.optic.ecoapt.routes.PhotosRoutes
 import com.optic.ecoapt.routes.RewardsRoutes
 
 import okhttp3.MediaType
