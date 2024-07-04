@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/imageview_reward"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="180dp"
             android:src="@drawable/rew_piso_caucho" />
 
 
@@ -39,11 +39,19 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/textview_reward_text_points"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Puntos :"
+            android:textSize="18sp" />
+        <TextView
             android:id="@+id/textview_reward_points"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="100 puntos"
+            android:text="100"
+            android:textStyle="bold"
             android:textSize="18sp" />
 
     </LinearLayout>

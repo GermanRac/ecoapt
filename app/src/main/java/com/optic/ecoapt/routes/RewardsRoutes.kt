@@ -14,17 +14,15 @@ import retrofit2.http.Part
 
 interface RewardsRoutes {
 
-
-
-    @GET("photos/getAll")
+    @GET("rewards/getAll")
     fun getAll():Call<ArrayList<Reward>>
 
 
     @Multipart
-    @POST("photos/create")
+    @POST("rewards/create")
     fun create(
         @Part image: MultipartBody.Part,
-        @Part("photo") photo: RequestBody,
+        @Part("reward") reward: RequestBody,
         @Header("Authorization") token:String
     ): Call<ResponseHttp>
 

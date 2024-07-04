@@ -5,7 +5,7 @@ class Reward (
     @SerializedName("id") val id: String,
     @SerializedName("name") val name: String,
     @SerializedName("description") val description:String,
-    @SerializedName("points") val points: String,
+    @SerializedName("reward_points") val points: String,
     @SerializedName("image") val image: String,
 
     ){
@@ -15,7 +15,7 @@ class Reward (
     }
 
     override fun toString(): String {
-        return "Reward(id='$id', name='$name', description=$description, points='$points', image='$image')"
+        return "Reward(id='$id', name='$name', description='$description', points='$points', image='$image')"
     }
 
 

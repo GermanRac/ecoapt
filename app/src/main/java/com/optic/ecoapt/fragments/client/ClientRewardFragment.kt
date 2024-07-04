@@ -8,15 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.optic.ecoapt.R
-import com.optic.ecoapt.adapters.EventsAdapter
 import com.optic.ecoapt.adapters.RewardsAdapter
-import com.optic.ecoapt.models.Event
 import com.optic.ecoapt.models.Reward
 import com.optic.ecoapt.models.User
-import com.optic.ecoapt.providers.EventsProvider
 import com.optic.ecoapt.providers.RewardsProvider
 import com.optic.ecoapt.utils.SharedPref
 import retrofit2.Call
@@ -25,14 +23,15 @@ import retrofit2.Response
 
 class ClientRewardFragment : Fragment() {
 
-    private val TAG = "ScheduleActivity"
+    private val TAG = "ClientRewardFragment"
     var myView: View? = null
     var recyclerViewRewards:RecyclerView? = null
+    var rewardsProvider : RewardsProvider? = null
     var adapter: RewardsAdapter? = null
     var user: User? = null
     var sharedPref: SharedPref? = null
-    var rewardsProvider : RewardsProvider? = null
-    var rewards:ArrayList<Reward> = ArrayList()
+//    var rewards:ArrayList<Reward> = ArrayList()
+    var rewards = ArrayList<Reward>()
 
 
 
@@ -44,20 +43,24 @@ class ClientRewardFragment : Fragment() {
         myView = inflater.inflate(R.layout.fragment_client_reward, container, false)
 
         recyclerViewRewards = myView?.findViewById(R.id.recyclerview_rewards)
-        recyclerViewRewards?.layoutManager = GridLayoutManager (requireContext(),2)
-
-
+//        recyclerViewRewards?.layoutManager = GridLayoutManager(requireContext(), 2)
+        recyclerViewRewards?.layoutManager = LinearLayoutManager(requireContext())
         sharedPref = SharedPref(requireActivity())
         getUserFromSession()
+
 //        rewardsProvider = RewardsProvider(user?.sessionToken!!)
         user?.sessionToken?.let { token ->
             rewardsProvider = RewardsProvider(token)
         }
+
         getRewards()
 
 
         return myView
     }
+
+
+
 
 
     private fun getRewards() {

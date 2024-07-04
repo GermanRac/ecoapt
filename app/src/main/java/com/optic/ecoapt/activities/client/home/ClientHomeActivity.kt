@@ -59,8 +59,7 @@ class ClientHomeActivity : AppCompatActivity() {
             }
         }
 
-        //buttonRewards = findViewById(R.id.btn_rewards)
-        //buttonRewards?.setOnClickListener{goToRewards()}
+
 
         getUserFromSession()
     }
@@ -88,15 +87,7 @@ class ClientHomeActivity : AppCompatActivity() {
     }
 
 
-//    private fun goToGame() {
-//        val i = Intent(this, GameActivity::class.java)
-//        startActivity(i)
-//    }
 
-//    private fun goToEcocomparte() {
-//        val i = Intent(this, EcocomparteActivity::class.java)
-//        startActivity(i)
-//    }
 
 
 }

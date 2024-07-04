@@ -18,7 +18,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ClientRewardsListActivity : AppCompatActivity() {
-    private val TAG = "ClientRewardsListActivity"
+    private val TAG = "ClientRewardsList"
 
     var recyclerViewRewards:RecyclerView? = null
     var adapter: RewardsAdapter? = null
@@ -33,6 +33,7 @@ class ClientRewardsListActivity : AppCompatActivity() {
 
         recyclerViewRewards = findViewById(R.id.recyclerview_rewards)
         recyclerViewRewards?.layoutManager = GridLayoutManager (this,2)
+
 
     }
 
