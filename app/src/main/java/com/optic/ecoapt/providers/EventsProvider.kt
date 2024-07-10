@@ -21,7 +21,7 @@ class EventsProvider {
 
     }
 
-    fun getAll():Call<ArrayList<Event>>? {
+    fun getAll():Call<String>? {
         return eventsRoutes?.getAll()
     }
 

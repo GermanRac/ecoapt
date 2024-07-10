@@ -7,6 +7,8 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.gson.Gson
 import com.optic.ecoapt.R
 import com.optic.ecoapt.adapters.EventsAdapter
@@ -52,25 +54,43 @@ class ScheduleActivity : AppCompatActivity() {
     }
 
 
-
     private fun getEvents() {
-        eventsProvider?.getAll()?.enqueue(object : Callback<ArrayList<Event>> {
-            override fun onResponse(call: Call<ArrayList<Event>>, response: Response<ArrayList<Event>>) {
+        eventsProvider?.getAll()?.enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.body() != null) {
-                    events.addAll(response.body()!!)
-                    adapter = EventsAdapter(this@ScheduleActivity, events)
-                    recyclerViewEvents?.adapter = adapter
+                    val jsonString = response.body()
+                    val objectMapper = ObjectMapper()
+                    try {
+                        val rootNode: JsonNode = objectMapper.readTree(jsonString)
+                        val events = mutableMapOf<String, Event>()
+
+                        rootNode.fields().forEach { entry ->
+                            val key = entry.key
+                            val eventNode = entry.value
+
+                            val description = eventNode["description"].asText()
+                            val eventDate = eventNode["event_date"].asText()
+                            val title = eventNode["title"].asText()
+
+                            val event = Event(key,description, eventDate,"", title)
+                            events[key] = event
+                        }
+
+                        events.forEach { (key, event) ->
+                            println("Key: $key, Event: $event")
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                 }
             }
 
-            override fun onFailure(call: Call<ArrayList<Event>>, t: Throwable) {
+            override fun onFailure(call: Call<String>, t: Throwable) {
                 Log.d(TAG, "Error: ${t.message}")
                 Toast.makeText(this@ScheduleActivity, "Error: ${t.message}", Toast.LENGTH_LONG).show()
             }
         })
     }
-
-
 
 
 

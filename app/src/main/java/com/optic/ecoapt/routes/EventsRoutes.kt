@@ -20,8 +20,8 @@ interface EventsRoutes {
 
 
 
-    @GET("events/getAll")
-    fun getAll():Call<ArrayList<Event>>
+    @GET("events.json")
+    fun getAll():Call<String>
 
 
     @Multipart
