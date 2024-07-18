@@ -48,7 +48,9 @@ class ClientCategoriesFragment : Fragment() {
 
         user?.sessionToken?.let { token ->
             categoriesProvider = CategoriesProvider(token)
+
         }
+
         getCategories()
 
 
@@ -61,8 +63,10 @@ class ClientCategoriesFragment : Fragment() {
             override fun onResponse(call: Call<ArrayList<Category>>, response: Response<ArrayList<Category>>) {
                 if (response.body() != null) {
                     categories = response.body()!!
+                    Log.d(TAG, "Categories size: ${categories.size}")
                     adapter = CategoriesAdapter(requireActivity(), categories)
                     recyclerViewCategories?.adapter = adapter
+
                 }
             }
 
@@ -79,12 +83,13 @@ class ClientCategoriesFragment : Fragment() {
     private fun getUserFromSession(){
 
         val gson = Gson()
+        val userData = sharedPref?.getData("user")
 
-        if (!sharedPref?.getData("user").isNullOrBlank()) {
-            //si el usuario existe en sesion
-            val user = gson.fromJson(sharedPref?.getData("user"), User::class.java )
-            Log.d(TAG,"Usuario: $user")
+        if (!userData.isNullOrBlank()) {
+            user = gson.fromJson(userData, User::class.java)
+            Log.d(TAG, "Usuario: $user")
         }
+
     }
 
 }

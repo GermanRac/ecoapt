@@ -42,10 +42,7 @@ class RewardsAdapter (val context: Activity, val rewards: ArrayList<Reward>): Re
 //        holder.itemView.setOnClickListener { goToRol(rol) }
     }
 
-//    private fun goToRol(rol: Rol) {
-//        val i = Intent(context, RestaurantHomeActivity::class.java)
-//        context.startActivity(i)
-//    }
+
 
     class RewardsViewHolder(view: View): RecyclerView.ViewHolder(view) {
 

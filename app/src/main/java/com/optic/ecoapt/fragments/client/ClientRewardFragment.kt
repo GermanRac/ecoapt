@@ -43,8 +43,8 @@ class ClientRewardFragment : Fragment() {
         myView = inflater.inflate(R.layout.fragment_client_reward, container, false)
 
         recyclerViewRewards = myView?.findViewById(R.id.recyclerview_rewards)
-//        recyclerViewRewards?.layoutManager = GridLayoutManager(requireContext(), 2)
-        recyclerViewRewards?.layoutManager = LinearLayoutManager(requireContext())
+        recyclerViewRewards?.layoutManager = GridLayoutManager(requireContext(), 2)
+//        recyclerViewRewards?.layoutManager = LinearLayoutManager(requireContext())
         sharedPref = SharedPref(requireActivity())
         getUserFromSession()
 

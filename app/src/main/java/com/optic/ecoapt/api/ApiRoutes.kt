@@ -27,7 +27,7 @@ class ApiRoutes {
         return retrofit.getClientWithToken(API_URL,token).create(PhotosRoutes::class.java)
     }
 
-    fun getCategoriesRoutes(token:String):CategoriesRoutes {
+    fun getCategoriesRoutes(token: String):CategoriesRoutes {
         return retrofit.getClientWithToken(API_URL,token).create(CategoriesRoutes::class.java)
     }
 
