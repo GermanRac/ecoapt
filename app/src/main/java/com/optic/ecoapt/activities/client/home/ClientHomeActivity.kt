@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import com.optic.ecoapt.R
+import com.optic.ecoapt.fragments.client.ClientCategoriesFragment
 import com.optic.ecoapt.fragments.client.ClientEcocomparteFragment
 import com.optic.ecoapt.fragments.client.ClientProfileFragment
 import com.optic.ecoapt.fragments.client.ClientRewardFragment
@@ -27,8 +28,8 @@ class ClientHomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_client_home)
         sharedPref = SharedPref(this)
 
-        openFragment(ClientRewardFragment())
-
+//        openFragment(ClientRewardFragment())
+        openFragment(ClientCategoriesFragment())
         bottomNavigation = findViewById(R.id.bottom_navigation)
         bottomNavigation?.setOnItemSelectedListener {
 
