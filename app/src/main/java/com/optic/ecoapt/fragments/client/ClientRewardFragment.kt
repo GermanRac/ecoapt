@@ -32,6 +32,7 @@ class ClientRewardFragment : Fragment() {
     var sharedPref: SharedPref? = null
 //    var rewards:ArrayList<Reward> = ArrayList()
     var rewards = ArrayList<Reward>()
+    var idCategory:String? = null
 
 
 
@@ -64,7 +65,7 @@ class ClientRewardFragment : Fragment() {
 
 
     private fun getRewards() {
-        rewardsProvider?.getAll()?.enqueue(object : Callback<ArrayList<Reward>> {
+        rewardsProvider?.findByCategory(idCategory!!)?.enqueue(object : Callback<ArrayList<Reward>> {
             override fun onResponse(call: Call<ArrayList<Reward>>, response: Response<ArrayList<Reward>>) {
                 if (response.body() != null) {
                     rewards.addAll(response.body()!!)

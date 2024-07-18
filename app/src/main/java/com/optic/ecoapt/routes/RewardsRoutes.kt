@@ -11,11 +11,17 @@ import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.Path
 
 interface RewardsRoutes {
 
-    @GET("rewards/getAll")
-    fun getAll():Call<ArrayList<Reward>>
+//    @GET("rewards/getAll")
+//    fun getAll():Call<ArrayList<Reward>>
+
+      @GET("rewards/findByCategory/{id_category}")
+    fun findByCategory(
+        @Path("id_category") idCategory:String
+    ):Call<ArrayList<Reward>>
 
 
     @Multipart

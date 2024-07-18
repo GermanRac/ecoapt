@@ -1,6 +1,7 @@
 package com.optic.ecoapt.adapters
 
 import android.app.Activity
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -40,12 +41,15 @@ class CategoriesAdapter (val context: Activity, val categories : ArrayList<Categ
         holder.textviewCategory.text = category.name
         Glide.with(context).load(category.image).into(holder.imageViewCategory)
 
+        holder.itemView.setOnClickListener{ gotoRewards(category)}
+
     }
 
-//    private fun gotoRewards(category: Category){
-//        val i = Intent (context,ClientRewardFragment::class.java)
-//        context.startActivity(i)
-//    }
+    private fun gotoRewards(category: Category){
+        val i = Intent (context,ClientRewardFragment::class.java)
+        i.putExtra("idCategory",category.id)
+        context.startActivity(i)
+    }
 
 
 

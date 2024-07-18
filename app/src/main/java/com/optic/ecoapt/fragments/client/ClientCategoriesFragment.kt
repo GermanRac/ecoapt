@@ -32,6 +32,8 @@ class ClientCategoriesFragment : Fragment() {
     var sharedPref: SharedPref? = null
     var categories = ArrayList<Category>()
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

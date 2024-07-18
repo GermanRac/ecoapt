@@ -1,6 +1,7 @@
 package com.optic.ecoapt.providers
 
 import com.optic.ecoapt.api.ApiRoutes
+import com.optic.ecoapt.models.Category
 import com.optic.ecoapt.models.ResponseHttp
 import com.optic.ecoapt.models.Reward
 import com.optic.ecoapt.routes.RewardsRoutes
@@ -21,10 +22,14 @@ class RewardsProvider(val token:String) {
 
     }
 
-    fun getAll():Call<ArrayList<Reward>>? {
-        return rewardsRoutes?.getAll()
-    }
+//    fun getAll():Call<ArrayList<Reward>>? {
+//        return rewardsRoutes?.getAll()
+//    }
 
+
+    fun findByCategory(idCategory: String):Call<ArrayList<Reward>>? {
+        return rewardsRoutes?.findByCategory(idCategory)
+    }
 
     fun  create(file: File, reward: Reward): Call<ResponseHttp>? {
         val reqFile = RequestBody.create(MediaType.parse("image/*"),file)

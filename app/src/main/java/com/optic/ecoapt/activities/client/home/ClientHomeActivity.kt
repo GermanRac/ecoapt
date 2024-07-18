@@ -28,8 +28,8 @@ class ClientHomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_client_home)
         sharedPref = SharedPref(this)
 
-        openFragment(ClientRewardFragment())
-//        openFragment(ClientCategoriesFragment())
+//        openFragment(ClientRewardFragment())
+        openFragment(ClientCategoriesFragment())
         bottomNavigation = findViewById(R.id.bottom_navigation)
         bottomNavigation?.setOnItemSelectedListener {
 
