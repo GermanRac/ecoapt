@@ -32,7 +32,8 @@ class SaveImageActivity : AppCompatActivity() {
     var buttonConfirm: Button? = null
     private  var imageFile: File?= null
 
-    var usersProvider = UsersProvider()
+//    var usersProvider = UsersProvider()
+    var usersProvider : UsersProvider? = null
     var user: User? = null
     var sharedPref: SharedPref?= null
 
@@ -42,6 +43,7 @@ class SaveImageActivity : AppCompatActivity() {
         sharedPref = SharedPref(this)
 
         getUserFromSession()
+        usersProvider = UsersProvider(user?.sessionToken)
 
         circleImageUser = findViewById(R.id.circleImageUser)
         buttonNext = findViewById(R.id.btn_next)
@@ -60,7 +62,7 @@ class SaveImageActivity : AppCompatActivity() {
 
         if (imageFile != null && user !=null) {
 
-            usersProvider.update(imageFile!!,user!!)?.enqueue(object :Callback<ResponseHttp>{
+            usersProvider?.update(imageFile!!,user!!)?.enqueue(object :Callback<ResponseHttp>{
                 override fun onResponse(call: Call<ResponseHttp>, response: Response<ResponseHttp>) {
                     Log.d(TAG,"RESPONSE: $response")
                     Log.d(TAG,"BODY: ${response.body()}")// ver informacion que arroja el servidor

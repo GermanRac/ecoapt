@@ -25,7 +25,7 @@ interface EventsRoutes {
 
 
     @Multipart
-    @POST("categories/create")
+    @POST("events/create")
     fun create(
         @Part image: MultipartBody.Part,
         @Part("event") event: RequestBody

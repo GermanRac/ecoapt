@@ -35,8 +35,8 @@ class ClientUpdateActivity : AppCompatActivity() {
     var user: User? = null
 
     private  var imageFile: File?= null
-//    var usersProvider: UsersProvider? = null
-    var usersProvider =  UsersProvider()
+    var usersProvider: UsersProvider? = null
+//    var usersProvider =  UsersProvider()
 
 
 
@@ -52,7 +52,7 @@ class ClientUpdateActivity : AppCompatActivity() {
 
         getUserFromSession()
 
-//        usersProvider = UsersProvider(user?.sessionToken)
+        usersProvider = UsersProvider(user?.sessionToken)
 
         editTextName?.setText(user?.name)
         editTextLastname?.setText(user?.lastname)
@@ -75,16 +75,18 @@ class ClientUpdateActivity : AppCompatActivity() {
         user?.name = name
         user?.lastname = lastname
 
-        if (imageFile != null ){
+        if (imageFile != null){
 
-            usersProvider.update(imageFile!!,user!!)?.enqueue(object : Callback<ResponseHttp> {
+            usersProvider?.update(imageFile!!,user!!)?.enqueue(object : Callback<ResponseHttp> {
                 override fun onResponse(call: Call<ResponseHttp>, response: Response<ResponseHttp>) {
                     Log.d(TAG, "RESPONSE: $response")
                     Log.d(TAG, "BODY: ${response.body()}")// ver informacion que arroja el servidor
 
                     Toast.makeText(this@ClientUpdateActivity, response.body()?.message,Toast.LENGTH_LONG).show()
 
-                    saveUserInSession(response.body()?.data.toString())
+                    if (response.body()?.isSuccess == true){
+                        saveUserInSession(response.body()?.data.toString())
+                    }
 
                 }
 
@@ -99,13 +101,17 @@ class ClientUpdateActivity : AppCompatActivity() {
         else{
 
 
-            usersProvider.updateWithoutImage(user!!)?.enqueue(object : Callback<ResponseHttp> {
+            usersProvider?.updateWithoutImage(user!!)?.enqueue(object : Callback<ResponseHttp> {
                 override fun onResponse(call: Call<ResponseHttp>, response: Response<ResponseHttp>) {
                     Log.d(TAG, "RESPONSE: $response")
                     Log.d(TAG, "BODY: ${response.body()}")// ver informacion que arroja el servidor
                     Toast.makeText(this@ClientUpdateActivity, response.body()?.message,Toast.LENGTH_LONG).show()
 
-                    saveUserInSession(response.body()?.data.toString())
+
+
+                    if (response.body()?.isSuccess == true){
+                        saveUserInSession(response.body()?.data.toString())
+                    }
 
                 }
 

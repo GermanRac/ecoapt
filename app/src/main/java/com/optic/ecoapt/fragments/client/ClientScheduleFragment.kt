@@ -1,10 +1,11 @@
-package com.optic.ecoapt.activities.client.home
+package com.optic.ecoapt.fragments.client
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageButton
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,9 +20,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ScheduleActivity : AppCompatActivity() {
+class ClientScheduleFragment : Fragment() {
 
     private val TAG = "ScheduleActivity"
+    var myView: View? = null
     var recyclerViewEvents: RecyclerView? = null
     var eventsProvider: EventsProvider? = null
     var adapter: EventsAdapter? = null
@@ -29,28 +31,24 @@ class ScheduleActivity : AppCompatActivity() {
     var sharedPref: SharedPref? = null
     var events = ArrayList<Event>()
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        myView = inflater.inflate(R.layout.fragment_client_schedule, container, false)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_schedule)
+        recyclerViewEvents = myView?.findViewById(R.id.recyclerview_events)
+        recyclerViewEvents?.layoutManager = LinearLayoutManager(requireContext()) // ELEMENTOS SE MOSTRARAN DE MANERA VERTICAL
 
-
-        recyclerViewEvents = findViewById(R.id.recyclerview_events)
-        recyclerViewEvents?.layoutManager = LinearLayoutManager(this) // ELEMENTOS SE MOSTRARAN DE MANERA VERTICAL
-
-        sharedPref = SharedPref(this)
+        sharedPref = SharedPref(requireActivity())
         getUserFromSession()
         eventsProvider = EventsProvider()
         getEvents()
 
 
-        val btnIcoAtras = findViewById<ImageButton>(R.id.btnIcoAtras)
-        btnIcoAtras.setOnClickListener {
-            onBackPressed()
-        }
-
+        return  myView
     }
-
 
 
     private fun getEvents() {
@@ -58,14 +56,14 @@ class ScheduleActivity : AppCompatActivity() {
             override fun onResponse(call: Call<ArrayList<Event>>, response: Response<ArrayList<Event>>) {
                 if (response.body() != null) {
                     events.addAll(response.body()!!)
-                    adapter = EventsAdapter(this@ScheduleActivity, events)
+                    adapter = EventsAdapter(requireActivity(), events)
                     recyclerViewEvents?.adapter = adapter
                 }
             }
 
             override fun onFailure(call: Call<ArrayList<Event>>, t: Throwable) {
                 Log.d(TAG, "Error: ${t.message}")
-                Toast.makeText(this@ScheduleActivity, "Error: ${t.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_LONG).show()
             }
         })
     }
@@ -73,27 +71,16 @@ class ScheduleActivity : AppCompatActivity() {
 
 
 
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish() // Finaliza la actividad actual
-    }
-
-
     private fun getUserFromSession(){
 
-        val sharedPref = SharedPref(this)
         val gson = Gson()
 
-        if (!sharedPref.getData("user").isNullOrBlank()) {
+        if (!sharedPref?.getData("user").isNullOrBlank()) {
             //si el usuario existe en sesion
-            val user = gson.fromJson(sharedPref.getData("user"), User::class.java )
+            val user = gson.fromJson(sharedPref?.getData("user"), User::class.java )
             Log.d(TAG,"Usuario: $user")
         }
     }
-
-
-
 
 
 

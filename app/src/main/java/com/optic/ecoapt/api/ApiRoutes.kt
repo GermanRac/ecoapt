@@ -1,7 +1,9 @@
 package com.optic.ecoapt.api
 
+import com.optic.ecoapt.routes.CategoriesRoutes
 import com.optic.ecoapt.routes.EventsRoutes
 import com.optic.ecoapt.routes.PhotosRoutes
+import com.optic.ecoapt.routes.RewardsRoutes
 import com.optic.ecoapt.routes.UsersRoutes
 
 class ApiRoutes {
@@ -21,7 +23,16 @@ class ApiRoutes {
         return retrofit.getClient(API_URL).create(EventsRoutes::class.java)
     }
 
-    fun getPhotosRoutes():PhotosRoutes {
-        return retrofit.getClient(API_URL).create(PhotosRoutes::class.java)
+    fun getPhotosRoutes(token:String):PhotosRoutes {
+        return retrofit.getClientWithToken(API_URL,token).create(PhotosRoutes::class.java)
     }
+
+    fun getCategoriesRoutes(token: String):CategoriesRoutes {
+        return retrofit.getClientWithToken(API_URL,token).create(CategoriesRoutes::class.java)
+    }
+
+    fun getRewardsRoutes(token:String):RewardsRoutes {
+        return retrofit.getClientWithToken(API_URL,token).create(RewardsRoutes::class.java)
+    }
+
 }

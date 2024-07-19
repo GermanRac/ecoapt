@@ -1,12 +1,10 @@
 package com.optic.ecoapt.activities.client.home
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
@@ -27,6 +25,7 @@ class UserProfileActivity : AppCompatActivity() {
     var textViewLastname:TextView?=null
     var textViewEmail:TextView?=null
     var imageviewBackmenu:ImageView?= null
+    var buttonLogout: Button? = null
 
 
     var sharedPref: SharedPref? = null
@@ -42,10 +41,14 @@ class UserProfileActivity : AppCompatActivity() {
         textViewLastname = findViewById(R.id.textview_lastname)
         textViewEmail = findViewById(R.id.textview_email)
         circleImageUser = findViewById(R.id.circleimage_user)
-        imageviewBackmenu = findViewById(R.id.imageview_backmenu)
+
+        buttonLogout = findViewById(R.id.btn_logoutClient)
 
         sharedPref = SharedPref(this)
         buttonUpdateProfile?.setOnClickListener{goToUpdate()}
+
+        buttonLogout?.setOnClickListener{ logout() }
+
         getUserFromSession()
 
         textViewName?.text = "${user?.name}"
@@ -76,6 +79,12 @@ class UserProfileActivity : AppCompatActivity() {
         }
     }
 
+    private fun  logout() {
+
+        sharedPref?.remove("user")
+        val i = Intent(this,MainActivity::class.java)
+        startActivity(i)
+    }
 
     private fun goToUpdate(){
         val i = Intent(this, ClientUpdateActivity::class.java)

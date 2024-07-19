@@ -4,9 +4,9 @@ import com.google.gson.Gson
 
 class Photo (
 
-    val id: String,
+    val id: String? = null,
     val name: String,
-    val image: String,
+    val image: String? = null,
     ) {
 
 

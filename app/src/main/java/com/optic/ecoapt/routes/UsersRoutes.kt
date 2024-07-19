@@ -28,14 +28,14 @@ interface UsersRoutes {
     @PUT("users/update")
     fun update(
         @Part image: MultipartBody.Part,
-        @Part("user") user:RequestBody
-//        @Header("Authorization") token:String
+        @Part("user") user:RequestBody,
+        @Header("Authorization") token:String
     ): Call<ResponseHttp>
 
     @PUT("users/updateWithoutImage")
     fun updateWithoutImage(
-        @Body user: User
-//        @Header("Authorization") token:String
+        @Body user: User,
+        @Header("Authorization") token:String
     ): Call<ResponseHttp>
 
 
