@@ -1,14 +1,21 @@
 package com.optic.ecoapt.activities
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
 import android.text.TextUtils
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import com.google.gson.Gson
 
@@ -32,6 +39,7 @@ class RegisterActivity : AppCompatActivity() {
     var editTextPassword: EditText? = null
     var editTextConfirmPassword: EditText? = null
     var buttonRegister: Button? = null
+    private lateinit var tvTermsConditions: TextView
     private var cbTermsConditions: CheckBox? = null
 
 
@@ -50,6 +58,34 @@ class RegisterActivity : AppCompatActivity() {
         editTextConfirmPassword= findViewById(R.id.edittext_confirm_password)
         cbTermsConditions = findViewById(R.id.cb_terms_conditions)
         buttonRegister= findViewById(R.id.btn_register)
+        tvTermsConditions = findViewById(R.id.disclaimer_privacy)
+        tvTermsConditions.movementMethod = LinkMovementMethod.getInstance()
+
+// Crear un SpannableString para manejar el clic en el hipervínculo
+        val spannableString = SpannableString(tvTermsConditions.text)
+        val clickableSpan = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                // Aquí es donde manejas el clic en el hipervínculo
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://firebasestorage.googleapis.com/v0/b/ecocomparte-9acb5.appspot.com/o/politicas%2FPolitica%20de%20privacidad.pdf?alt=media&token=acd5f025-357b-40d8-a065-25862e88138f")
+                )
+                startActivity(intent)
+            }
+        }
+
+        // Encontrar el índice del texto "términos y condiciones" en el string
+        val startIndex = tvTermsConditions.text.indexOf("términos y condiciones")
+        val endIndex = startIndex + "términos y condiciones".length
+
+        // Aplicar el ClickableSpan al texto "términos y condiciones"
+        spannableString.setSpan(clickableSpan, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        // Establecer el SpannableString en el TextView
+        tvTermsConditions.text = spannableString
+
+
+
 
         cbTermsConditions = findViewById(R.id.cb_terms_conditions)
 

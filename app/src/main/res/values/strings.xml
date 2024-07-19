@@ -2,7 +2,7 @@
     <string name="app_name">DeliveryKotlinUdemy</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="terms_conditions_text">Acepto los <a href="https://tu-dominio.com/terminos-y-condiciones">términos y condiciones</a></string>
-
+<!--    <string name="terms_conditions_text">Acepto los <a href="https://firebasestorage.googleapis.com/v0/b/ecocomparte-9acb5.appspot.com/o/politicas%2FPolitica%20de%20privacidad.pdf?alt=media&token=acd5f025-357b-40d8-a065-25862e88138f">términos y condiciones</a></string>-->
+    <string name="terms_conditions_text">Acepto los <a href="https://firebasestorage.googleapis.com/v0/b/ecocomparte-9acb5.appspot.com/o/politicas%2FPolitica%20de%20privacidad.pdf?alt=media&amp;token=acd5f025-357b-40d8-a065-25862e88138f">términos y condiciones</a></string>
 
 </resources>
