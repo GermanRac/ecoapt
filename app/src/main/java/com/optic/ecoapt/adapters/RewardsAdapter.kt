@@ -1,6 +1,7 @@
 package com.optic.ecoapt.adapters
 
 import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import com.optic.ecoapt.R
+import com.optic.ecoapt.activities.client.rewards.detail.ClientRewardsDetailActivity
+import com.optic.ecoapt.activities.client.rewards.list.ClientRewardsListActivity
 import com.optic.ecoapt.models.Reward
 import com.optic.ecoapt.utils.SharedPref
 
@@ -39,7 +43,15 @@ class RewardsAdapter (val context: Activity, val rewards: ArrayList<Reward>): Re
         Glide.with(context).load(reward.image).into(holder.imageViewReward)
 
 
-//        holder.itemView.setOnClickListener { goToRol(rol) }
+        holder.itemView.setOnClickListener { goToDetail(reward) }
+    }
+
+    private fun goToDetail(reward:Reward){
+
+
+        val i = Intent(context,ClientRewardsDetailActivity::class.java)
+        i.putExtra("reward",reward.toJson())
+        context.startActivity(i)
     }
 
 

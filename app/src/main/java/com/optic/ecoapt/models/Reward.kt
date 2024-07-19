@@ -6,6 +6,7 @@ class Reward (
      val name: String,
      val description:String,
      val reward_points: String,
+     val quantity: String,
      val image: String,
 
     ){
@@ -15,7 +16,7 @@ class Reward (
     }
 
     override fun toString(): String {
-        return "Reward(id='$id', name='$name', description='$description', reward_points='$reward_points', image='$image')"
+        return "Reward(id='$id', name='$name', description='$description', reward_points='$reward_points', quantity='$quantity', image='$image')"
     }
 
 

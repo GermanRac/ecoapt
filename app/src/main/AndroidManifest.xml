@@ -20,6 +20,9 @@
         android:theme="@style/Theme.DeliveryKotlinUdemy"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.client.rewards.detail.ClientRewardsDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.client.rewards.list.ClientRewardsListActivity"
             android:exported="false" />
         <activity
