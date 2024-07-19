@@ -68,6 +68,7 @@ class ClientRewardFragment : Fragment() {
         rewardsProvider?.findByCategory(idCategory!!)?.enqueue(object : Callback<ArrayList<Reward>> {
             override fun onResponse(call: Call<ArrayList<Reward>>, response: Response<ArrayList<Reward>>) {
                 if (response.body() != null) {
+                    Log.d(TAG, "Data json : ${response.body()}")
                     rewards.addAll(response.body()!!)
                     adapter = RewardsAdapter(requireActivity(), rewards)
                     recyclerViewRewards?.adapter = adapter

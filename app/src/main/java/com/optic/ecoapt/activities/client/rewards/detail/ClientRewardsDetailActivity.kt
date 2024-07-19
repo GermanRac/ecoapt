@@ -37,7 +37,7 @@ class ClientRewardsDetailActivity : AppCompatActivity() {
 
 
         // Cargar la imagen usando Glide
-        reward?.image?.let { imageUrl ->
+        reward?.image_url?.let { imageUrl ->
             Glide.with(this)
                 .load(imageUrl)
                 .into(imageView!!)
