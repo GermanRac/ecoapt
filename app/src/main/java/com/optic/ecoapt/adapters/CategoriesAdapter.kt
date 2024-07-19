@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.optic.ecoapt.R
+import com.optic.ecoapt.activities.client.rewards.list.ClientRewardsListActivity
 import com.optic.ecoapt.fragments.client.ClientRewardFragment
 import com.optic.ecoapt.models.Category
 import com.optic.ecoapt.models.Reward
@@ -46,7 +47,7 @@ class CategoriesAdapter (val context: Activity, val categories : ArrayList<Categ
     }
 
     private fun gotoRewards(category: Category){
-        val i = Intent (context,ClientRewardFragment::class.java)
+        val i = Intent (context,ClientRewardsListActivity::class.java)
         i.putExtra("idCategory",category.id)
         context.startActivity(i)
     }

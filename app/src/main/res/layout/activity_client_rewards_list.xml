@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.client.ClientCategoriesFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-
+    tools:context=".activities.client.home.ClientHomeActivity">
 
     <RelativeLayout
         android:id="@+id/bar_Layout"
@@ -19,20 +19,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Categorias"
+            android:text="Recompensas"
             android:textStyle="bold"
             android:fontFamily="@font/catalish_huntera"
             android:textColor="@color/white"
-            android:textSize="34sp" />
+            android:textSize="36sp" />
+
 
     </RelativeLayout>
 
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_categories"
+        android:id="@+id/recyclerview_rewards"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="58dp"
         android:layout_marginBottom="60dp"
-        android:background="@drawable/gradient_background" />
+        android:layout_marginTop="58dp"/>
 
-</FrameLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
